@@ -1,0 +1,64 @@
+﻿<Window x:Class="SpcSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpcSample"
+        mc:Ignorable="d"
+        Title="SPC Sample" Height="390" Width="505" Loaded="Window_Loaded" Closing="Window_Closing" ResizeMode="CanMinimize" WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!--Column 0-->
+            <ColumnDefinition Width="75" />
+            <!--Column 1-->
+            <ColumnDefinition Width="*" />
+            <!--Column 2-->
+            <ColumnDefinition Width="85" />
+            <!--Column 3-->
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <!--Row 0-->
+            <RowDefinition Height="Auto" />
+            <!--Row 1-->
+            <RowDefinition Height="Auto" />
+            <!--Row 2-->
+            <RowDefinition Height="*" />
+            <!--Row 3-->
+            <RowDefinition Height="Auto" />
+            <!--Row 4-->
+            <RowDefinition Height="1*" />
+            <!--Row 5-->
+            <RowDefinition Height="Auto" />
+            <!--Row 6-->
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Row 0 - Port Controls-->
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top" Text="COM-Port :" Margin="0,8,5,5" />
+        <ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Name="comboBox_PortSelect" Margin="5,5,20,5" IsEditable="True" Text="Select a Port" SelectionChanged="comboBox_PortSelect_SelectionChanged" />
+        <Button  Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Name="button_OpenPort" Content="OPEN PORT" Margin="0,2,20,2" Click="button_OpenPort_Click" />
+        <!--Row 1-->
+        <TextBlock  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="TID Text :" Margin="0,5,30,5" FontSize="13" />
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Name="textBox_Label" Margin="100,2,100,2" Height="22" TextAlignment="Center" FontSize="13" CharacterCasing="Upper" />
+        <!--Row 2-->
+        <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Name="button_Read" Content="READ" Margin="30,2,40,2" Click="button_Read_Click" IsEnabled="False" />
+        <Button Grid.Row="3" Grid.Column="3"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="WRITE" Width="100" Margin="0,3,0,3" Name="button_Write" Click="button_Write_Click" IsEnabled="False" />
+        <!--Row 3-->
+        <TextBlock  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top" Text="Data Read : " Margin="0,5,2,0" />
+        <TextBox  Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="textBox_Data" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="5,5,5,5" MaxLength="92" FontSize="13" IsReadOnly="True" />
+        <TextBlock Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Right" VerticalAlignment="Top" Text="Data to write :" TextWrapping="Wrap" Margin="0,5,5,0" />
+        <TextBox  Grid.Row="2" Grid.Column="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="textBox_ToWrite" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="0,5,5,5" MaxLength="77" FontSize="13" />
+        <!--Row 4-->
+        <TextBlock  Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top" Text="Info Log:" TextWrapping="Wrap" Margin="5,5,5,0" TextAlignment="Right" />
+        <TextBox  Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="textBox_Logging" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Margin="5,5,5,5" IsReadOnly="True" Background="LightGoldenrodYellow" MaxLines="5000" />
+        <!--Row 5-->
+        <TextBlock Grid.Row="5"  Grid.Column="2"  Name="textBlock_Result" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="25" Margin="0,5,0,5" />
+        <TextBlock Grid.Row="5" Grid.Column="1"  Name="textBlock_ResultTitle" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Op.Result →" Margin="0,0,10,0" FontSize="15" />
+        <!--Row 6-->
+        <TextBlock Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Reader ID:" Margin="10,5,5,5" />
+        <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Name="textBlock_ReaderID" HorizontalAlignment="Left" VerticalAlignment="Center" Text="0000000" Margin="70,5,0,5" />
+        <TextBlock Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Battery:" Margin="0,5,70,5" />
+        <TextBlock Grid.Row="6" Grid.Column="1" Name="textBlock_Battery" HorizontalAlignment="Right" VerticalAlignment="Center" Text="- - -" Margin="0,5,15,5" />
+    </Grid>
+</Window>
