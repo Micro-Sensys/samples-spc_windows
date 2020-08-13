@@ -1,7 +1,7 @@
 # samples-spc_windows / Windows SPC sample codes
 This sample code is for **SPC** communication (devices in SPC mode) on Windows devices.
 
-[Test LINK: SPC communication mode](../../doc/communication-modes/spc)
+[Test LINK: SPC communication mode](../../../doc/communication-modes/spc)
 //TODO Add link See "communication-modes/spc"
 
 ## Requirements
