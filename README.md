@@ -4,6 +4,9 @@ This sample code is for **SPC** communication (devices in SPC mode) on Windows d
 [Test LINK: SPC communication mode](../../../doc/communication-modes/spc)
 
 [Test LINK: SPC communication mode](https://github.com/Micro-Sensys/doc/[[/communication-modes/spc]])
+
+https://github.com/Micro-Sensys/doc/tree/master/communication-modes/doc
+
 //TODO Add link See "communication-modes/spc"
 
 ## Requirements
