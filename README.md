@@ -1,13 +1,7 @@
 # samples-spc_windows / Windows SPC sample codes
 This sample code is for **SPC** communication (devices in SPC mode) on Windows devices.
 
-[Test LINK: SPC communication mode](../../../doc/communication-modes/spc)
-
-[Test LINK: SPC communication mode](https://github.com/Micro-Sensys/doc/[[/communication-modes/spc]])
-
-https://github.com/Micro-Sensys/doc/tree/master/communication-modes/doc
-
-//TODO Add link See "communication-modes/spc"
+> For details on SPC communication check [Useful Links](#Useful-Links) 
 
 ## Requirements
 * IDE (Visual Studio 2017 / eclipse IDE)
@@ -26,7 +20,7 @@ Using this class the communication port can be open/closed. It automatically han
 Import the project into your IDE and check the communication port name for the RFID reader (for example *COM3*) and fill the name into the code.
 For some samples the available devices are automatically detected. 
 
-//TODO screenshot?? 
+> **TODO: Add screenshot??**
 <!--- ![Screenshot](screenshot/SampleApp_SpcControl_AndroidJava.png) --->
 
  1. Select the device you wish to connect to, and press CONNECT. Once the connect process finishes, the result will be shown in the EditText on the bottom side, and if the device is connected, the READ/WRITE buttons will be enabled.
@@ -37,8 +31,10 @@ For some samples the available devices are automatically detected.
 
 ## Useful Links
 
- - [Scripts](https://www.microsensys.de/downloads/DevSamples/Sample%20Codes/SPC/Additionals/Sample%20scripts/)
- - [iID® INTERFACE configuration tool (tool to upload script to reader)](https://www.microsensys.de/downloads/CDContent/Install/iID%c2%ae%20interface%20config%20tool.zip)
+* [Scripts](https://www.microsensys.de/downloads/DevSamples/Sample%20Codes/SPC/Additionals/Sample%20scripts/)
+* [iID® INTERFACE configuration tool (tool to upload script to reader)](https://www.microsensys.de/downloads/CDContent/Install/iID%c2%ae%20interface%20config%20tool.zip)
+* GitHub *doc* repository: [Micro-Sensys/doc](https://github.com/Micro-Sensys/doc)
+	* [communication-modes/spc](https://github.com/Micro-Sensys/doc/tree/master/communication-modes/spc)
 
 ## Contact
 
