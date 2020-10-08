@@ -33,8 +33,8 @@ For some samples the available devices are automatically detected.
 
 * [Scripts](https://www.microsensys.de/downloads/DevSamples/Sample%20Codes/SPC/Additionals/Sample%20scripts/)
 * [iID® INTERFACE configuration tool (tool to upload script to reader)](https://www.microsensys.de/downloads/CDContent/Install/iID%c2%ae%20interface%20config%20tool.zip)
-* GitHub *doc* repository: [Micro-Sensys/doc](https://github.com/Micro-Sensys/doc)
-	* [communication-modes/spc](https://github.com/Micro-Sensys/doc/tree/master/communication-modes/spc)
+* GitHub *documentation* repository: [Micro-Sensys/documentation](https://github.com/Micro-Sensys/documentation)
+	* [communication-modes/spc](https://github.com/Micro-Sensys/documentation/tree/master/communication-modes/spc)
 
 ## Contact
 
