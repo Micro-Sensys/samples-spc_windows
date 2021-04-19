@@ -5,7 +5,7 @@ This repository contains sample codes for handling devices in SPC mode on Window
 
 ## Available SPC sample codes
 You can find further details on SPC samples under the repository subfolders
- * [.NET Framework](dotnet-framework)
+ * [.NET](dotnet)
  * [Java](java)
  * [Low level](lowlevel)
  * [UWP](uwp)
