@@ -1,5 +1,5 @@
 # samples-spc_windows / Windows SPC sample codes
-This repository contains sample codes for handling devices in SPC mode on Windows devices.
+This repository contains sample codes for **SPC** communication (devices in SPC mode) on devices running Windows OS.
 
 > For details on SPC communication check [Useful Links](#Useful-Links) 
 

@@ -1,5 +1,5 @@
 # .NET SPC sample code
-This sample uses serial communication to communicate with device in SPC mode
+This code shows how to use **SpcInterfaceControl** class to communicate with a device running on SPC mode. 
 > For details on SPC communication check [Useful Links](#Useful-Links)
 
 ## Requirements
@@ -15,10 +15,10 @@ For demo purposes both a .NET Core console and a WPF App as sample code are prov
 Code used for these projects is written in C# or VisualBasic
 
 ## Steps
-Import the project into your, chose a project and launch it. Fist check the communication port name for the RFID reader (for example *COM3*) and if needed fill the name into the code.
+Import the project into your IDE, chose a project and launch it. Fist check the communication port name for the RFID reader (for example *COM3*) and if needed fill the name into the code.
 For some samples the available devices are automatically detected. 
 
-![Screenshot](screenshot/SpcSample_NetFramework.png)
+![Screenshot](screenshot/Sample_iIDrl_SPC_Console.png)![Screenshot](screenshot/SpcSample_NetFramework.png)
 
  1. Select the device you wish to connect to, and press OPEN PORT. Once the connect process finishes, the result will be shown in the EditText on the bottom side, and if the device is connected, the READ/WRITE buttons will be enabled.
  2. Received data will be automatically decoded as Heartbeat or other data

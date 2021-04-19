@@ -1,5 +1,6 @@
-# SPC sample for Java
+# Java SPC sample code
 This code shows how to use **SpcInterfaceControl** class to communicate with a device running on SPC mode. 
+> For details on SPC communication check [Useful Links](#Useful-Links)
 
 ## Requirements
 * Java IDE (For implementing this sample *eclipse IDE* was used)
