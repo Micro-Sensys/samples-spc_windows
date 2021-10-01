@@ -140,7 +140,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		
 		//TODO get available COM-Ports. Example for Windows, Linux and macOS
-		String comPortNames[] = {"COM12", "/dev/ttyUSB0", "/dev/tty.usbserial-00000001"};
+		String comPortNames[] = {"COM8", "/dev/ttyUSB0", "/dev/tty.usbserial-00000001"};
 		
 		comboBoxDevices = new JComboBox(comPortNames);
 		buttonConnect = new JButton("CONNECT");
