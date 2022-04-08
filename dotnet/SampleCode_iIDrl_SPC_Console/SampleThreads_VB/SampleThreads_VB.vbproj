@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsensys.iIDReaderLibrary.SpcInterfaceControl" Version="1.0.0" />
+    <PackageReference Include="Microsensys.iIDReaderLibrary.SpcInterfaceControl" Version="1.0.2" />
   </ItemGroup>
 
 </Project>
