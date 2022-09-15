@@ -1,7 +1,5 @@
-Imports System
 Imports System.Threading
 Imports iIDReaderLibrary
-Imports iIDReaderLibrary.SpcInterfaceFunctions
 Imports iIDReaderLibrary.Utils
 
 Module Program
@@ -28,7 +26,7 @@ Module Program
         Console.WriteLine(".NETCore Console")
         Console.WriteLine("SampleManualCheck_C#")
         Console.WriteLine("--------------------")
-        Console.WriteLine("Library Version: " + iIDReaderLibrary.Version.LibraryVersion)
+        Console.WriteLine("Library Version: " + SpcInterfaceControl.LibraryVersion)
 
         'Get SpcInterfaceControl instance
         Dim spcIntControl As SpcInterfaceControl = Await Console_InitializeSpcInterfaceControlAsync()

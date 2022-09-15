@@ -1,7 +1,5 @@
-Imports System
 Imports System.Threading
 Imports iIDReaderLibrary
-Imports iIDReaderLibrary.SpcInterfaceFunctions
 Imports iIDReaderLibrary.Utils
 
 Module Program
@@ -14,14 +12,14 @@ Module Program
     ' This sample demonstrates how to call the SpcInterfaceControl functions that run the process in a separate new thread.
     ' This is only for demo purposes. For a Console application is not efficient to work in this way.
 
-    ReadOnly m_Lock As Object = New Object()
+    ReadOnly m_Lock As New Object()
     Dim m_LastId As String
 
     Sub Main(args As String())
         Console.WriteLine(".NETCore Console")
         Console.WriteLine("SampleThreads_C#")
         Console.WriteLine("--------------------")
-        Console.WriteLine("Library Version: " + iIDReaderLibrary.Version.LibraryVersion)
+        Console.WriteLine("Library Version: " + SpcInterfaceControl.LibraryVersion)
 
         'Get SpcInterfaceControl instance
         Dim spcIntControl As SpcInterfaceControl = Console_InitializeSpcInterfaceControl()

@@ -25,7 +25,7 @@ namespace SampleThreads_CSharp
             Console.WriteLine(".NETCore Console");
             Console.WriteLine("SampleThreads_C#");
             Console.WriteLine("--------------------");
-            Console.WriteLine("Library Version: " + iIDReaderLibrary.Version.LibraryVersion);
+            Console.WriteLine("Library Version: " + SpcInterfaceControl.LibraryVersion);
 
             //Get SpcInterfaceControl instance
             SpcInterfaceControl spcIntControl = Console_InitializeSpcInterfaceControl();
@@ -160,7 +160,7 @@ namespace SampleThreads_CSharp
             initializeCompleted = true;
         }
 
-        private static void SpcInterface_ReaderHeartbeatReceived(object _sender, iIDReaderLibrary.SpcInterfaceFunctions.ReaderHeartbeat _heartbeat)
+        private static void SpcInterface_ReaderHeartbeatReceived(object _sender, ReaderHeartbeat _heartbeat)
         {
             //Event raised when Heartbeat received from Reader
             lock (m_Lock)
@@ -171,7 +171,7 @@ namespace SampleThreads_CSharp
             }
         }
 
-        private static void SpcInterface_RawDataReceived(object _sender, iIDReaderLibrary.SpcInterfaceFunctions.RawDataReceived _rawData)
+        private static void SpcInterface_RawDataReceived(object _sender, RawDataReceived _rawData)
         {
             //Event raised when data received from Reader
             DecodeReceivedText(_rawData.Data);

@@ -1,6 +1,6 @@
 ﻿Imports iIDReaderLibrary
-Imports iIDReaderLibrary.SpcInterfaceFunctions
 Imports iIDReaderLibrary.Utils
+Imports iIDReaderLibrary.Utils.Definitions
 
 Class MainWindow
 
@@ -38,9 +38,11 @@ Class MainWindow
 
         Try
             'Initialize InterfaceCommunicationSettings
-            '   PortType = 2 --> Bluetooth
+            '   PortType = -> Bluetooth
             '   PortName = selected device in ComboBox
-            Dim readerPortSettings As InterfaceCommunicationSettings = InterfaceCommunicationSettings.GetForSerialDevice(2, comboBox_PortSelect.SelectedItem.ToString())
+            Dim readerPortSettings As InterfaceCommunicationSettings = InterfaceCommunicationSettings.GetForSerialDevice(
+                PortTypeEnum.PortType_Bluetooth,
+                comboBox_PortSelect.SelectedItem.ToString())
             Dim suffix As String = ChrW(&HD) + ChrW(&HA)
             m_SpcInterface = New SpcInterfaceControl(readerPortSettings, "", suffix)
 

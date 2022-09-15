@@ -1,5 +1,6 @@
 ﻿using iIDReaderLibrary;
 using iIDReaderLibrary.Utils;
+using iIDReaderLibrary.Utils.Definitions;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -64,9 +65,11 @@ namespace SampleThreads_CSharp
             try
             {
                 //Initialize InterfaceCommunicationSettings
-                //  PortType = 2 --> Bluteooth
+                //  PortType = -> Bluteooth
                 //  PortName = selected device in ComboBox
-                var readerPortSettings = InterfaceCommunicationSettings.GetForSerialDevice(2, comboBox_PortSelect.SelectedItem.ToString());
+                var readerPortSettings = InterfaceCommunicationSettings.GetForSerialDevice(
+                    PortTypeEnum.PortType_Bluetooth, 
+                    comboBox_PortSelect.SelectedItem.ToString());
                 m_SpcInterface = new SpcInterfaceControl(readerPortSettings, "", "\r\n");
 
                 //Open communication port
@@ -149,7 +152,7 @@ namespace SampleThreads_CSharp
             }
         }
 
-        private void SpcInterface_ReaderHeartbeatReceived(object _sender, iIDReaderLibrary.SpcInterfaceFunctions.ReaderHeartbeat _heartbeat)
+        private void SpcInterface_ReaderHeartbeatReceived(object _sender, ReaderHeartbeat _heartbeat)
         {
             //Event raised when Heartbeat received from Reader
             if (m_Disposing) return;
@@ -163,7 +166,7 @@ namespace SampleThreads_CSharp
             });
         }
 
-        private void SpcInterface_RawDataReceived(object _sender, iIDReaderLibrary.SpcInterfaceFunctions.RawDataReceived _rawData)
+        private void SpcInterface_RawDataReceived(object _sender, RawDataReceived _rawData)
         {
             //Event raised when data received from Reader
             if (m_Disposing) return;

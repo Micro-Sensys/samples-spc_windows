@@ -1,5 +1,4 @@
 ﻿using iIDReaderLibrary;
-using iIDReaderLibrary.SpcInterfaceFunctions;
 using iIDReaderLibrary.Utils;
 using System;
 using System.Threading;
@@ -31,7 +30,7 @@ namespace SampleManualCheck_CSharp
             Console.WriteLine(".NETCore Console");
             Console.WriteLine("SampleThreads_C#");
             Console.WriteLine("--------------------");
-            Console.WriteLine("Library Version: " + iIDReaderLibrary.Version.LibraryVersion);
+            Console.WriteLine("Library Version: " + SpcInterfaceControl.LibraryVersion);
 
             //Get SpcInterfaceControl instance
             SpcInterfaceControl spcIntControl = Console_InitializeSpcInterfaceControl();
