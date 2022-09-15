@@ -1,5 +1,6 @@
 ﻿using iIDReaderLibrary;
 using iIDReaderLibrary.Utils;
+using iIDReaderLibrary.Utils.Definitions;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,9 +69,11 @@ namespace SampleManualCheck_CSharp
             try
             {
                 //Initialize InterfaceCommunicationSettings
-                //  PortType = 2 --> Bluteooth
+                //  PortType = -> Bluteooth
                 //  PortName = selected device in ComboBox
-                var readerPortSettings = InterfaceCommunicationSettings.GetForSerialDevice(2, comboBox_PortSelect.SelectedItem.ToString());
+                var readerPortSettings = InterfaceCommunicationSettings.GetForSerialDevice(
+                    PortTypeEnum.PortType_Bluetooth, 
+                    comboBox_PortSelect.SelectedItem.ToString());
                 m_SpcInterface = new SpcInterfaceControl(readerPortSettings, "", "\r\n");
 
                 //Open communication port

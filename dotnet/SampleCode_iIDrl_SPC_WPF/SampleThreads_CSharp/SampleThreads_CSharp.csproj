@@ -37,16 +37,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="iIDReaderLibrary, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsensys.iIDReaderLibrary.1.0.2\lib\netstandard2.0\iIDReaderLibrary.dll</HintPath>
+    <Reference Include="iIDReaderLibrary, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsensys.iIDReaderLibrary.1.0.3\lib\netstandard2.0\iIDReaderLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="iIDReaderLibrary.SpcInterfaceControl, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsensys.iIDReaderLibrary.SpcInterfaceControl.1.0.2\lib\netstandard2.0\iIDReaderLibrary.SpcInterfaceControl.dll</HintPath>
+    <Reference Include="iIDReaderLibrary.SpcInterfaceControl, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsensys.iIDReaderLibrary.SpcInterfaceControl.1.0.3\lib\netstandard2.0\iIDReaderLibrary.SpcInterfaceControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.IO.Ports, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.Ports.5.0.0\lib\net461\System.IO.Ports.dll</HintPath>
+    <Reference Include="System.IO.Ports, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Ports.6.0.0\lib\net461\System.IO.Ports.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
