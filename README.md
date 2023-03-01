@@ -9,6 +9,7 @@ You can find further details on SPC samples under the repository subfolders
  * [Java](java)
  * [Low level](lowlevel)
  * [UWP](uwp)
+ * [RESTful](restful)
 
 ## Useful Links
 

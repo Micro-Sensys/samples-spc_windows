@@ -25,7 +25,8 @@ For some samples the available devices are automatically detected.
  3. Use READ/WRITE buttons to trigger the processes built in the script
 
 ## Useful Links
-
+* [NuGet Package page](https://www.nuget.org/packages/Microsensys.iIDReaderLibrary.SpcInterfaceControl/)
+* [API documentation](https://www.microsensys.de/downloads/DevSamples/Libraries/Windows/iIDReaderLibrary%20-%20.NET%20library/)
 * [Scripts](https://www.microsensys.de/downloads/DevSamples/Sample%20Codes/SPC/Additionals/Sample%20scripts/)
 * [iID® INTERFACE configuration tool (tool to upload script to reader)](https://www.microsensys.de/downloads/CDContent/Install/iID%c2%ae%20interface%20config%20tool.zip)
 * GitHub *documentation* repository: [Micro-Sensys/documentation](https://github.com/Micro-Sensys/documentation)
