@@ -37,11 +37,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="iIDReaderLibrary, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsensys.iIDReaderLibrary.1.0.3\lib\netstandard2.0\iIDReaderLibrary.dll</HintPath>
+    <Reference Include="iIDReaderLibrary, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsensys.iIDReaderLibrary.2.0.0\lib\netstandard2.0\iIDReaderLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="iIDReaderLibrary.SpcInterfaceControl, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsensys.iIDReaderLibrary.SpcInterfaceControl.1.0.3\lib\netstandard2.0\iIDReaderLibrary.SpcInterfaceControl.dll</HintPath>
+    <Reference Include="iIDReaderLibrary.SpcInterfaceControl, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsensys.iIDReaderLibrary.SpcInterfaceControl.2.0.0\lib\netstandard2.0\iIDReaderLibrary.SpcInterfaceControl.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.BluetoothLE, Version=4.0.0.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
+      <HintPath>..\packages\InTheHand.BluetoothLE.4.0.44\lib\netstandard2.0\InTheHand.BluetoothLE.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
