@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>iID&#174;service Sample SPC</title>
+    <link rel="icon" href="data:,">
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/led.css">
+
+    <script src="js/service_api.js"></script>
+
+    <script src="js/helper/timer.js"></script>
+    <script src="js/helper/http.js"></script>
+    <script src="js/helper/base64.js"></script>
+    <script src="js/helper/convert.js"></script>
+    <script src="js/helper/storage.js"></script>
+</head>
+
+<body>
+	<div class="myContainer">
+
+        <script>
+            window.onload = function() {
+                document.getElementById("readerID-name").innerHTML = "Starting... (please call \"spc/Initialize\" in main!)";
+                SSEstartDemoSearchList();
+            }
+        </script>
+		
+		<div class="myHeader">
+            <h1 style="color:#0081c9"><b>iID&#174;service Sample SPC</b></h1>
+            <h2>- SSE DEMO search list -</h2>
+            <h3 id="destinationPath" ></h3>
+            <script type="text/JavaScript">
+                document.getElementById("destinationPath").innerHTML = PROTOCOL + "://" + IP_ADDRESS + ":" + PORT + "/api/iidservice/";
+            </script>
+		</div>
+
+		<div class="myBody">
+
+            <div class="readerID-all">
+                <div id="readerID-name">
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div id="readerID-led">
+                    <div id="ledRedDiv" style="display:block;">
+                        <div id="redLED" class="led-red"></div>
+                    </div>
+                    <div id="ledGreenDiv" style="display:none;">
+                        <div id="greenLED" class="led-green"></div>
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+            <br><br>
+            <br><br>
+
+            <button class="button myButton" onClick="JavaScript:POSTsendSpcRequest()">POST - Trigger SPC scan</button>
+            <div id="resultInfo">Result: ...</div>
+
+            <div class="wrap">
+                <h3>Use search input to filter table</h3>
+                <input style="min-width: 300px;" type="text" id="searchTermID" onkeyup="searchFunction()" placeholder="Place cursor here to fill transponder ID or type one" >
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <h3>New transponders will be added to the table below</h3>
+            <div class="searchTable" id="myDynamicTable"></div>
+		</div>
+		
+		<div class="myFooter">
+            &copy; 2023 Copyright:&nbsp;<a href="https://www.microsensys.de">Micro-Sensys GmbH</a>
+            &nbsp;- GitHub:&nbsp;<a href="https://github.com/Micro-Sensys">https://github.com/Micro-Sensys</a>
+		</div>
+		
+    </div>
+</body>
+</html>

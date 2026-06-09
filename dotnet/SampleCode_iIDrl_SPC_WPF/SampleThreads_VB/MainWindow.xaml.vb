@@ -3,12 +3,13 @@ Imports iIDReaderLibrary.Utils
 Imports iIDReaderLibrary.Utils.Definitions
 
 Class MainWindow
-
     Dim m_SpcInterface As SpcInterfaceControl = Nothing
     Private m_Disposing As Boolean = False
 
     Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
+        'Get port names and populate ComboBox
         Dim portNames As String() = InterfaceCommunicationSettings.GetAvailablePortNames()
+        '   For BluetoothLE use --> InterfaceCommunicationSettings.GetAvailableBlePairedDevices();
         If portNames IsNot Nothing Then
             If portNames.Length > 0 Then
                 For Each device As String In portNames
@@ -22,9 +23,7 @@ Class MainWindow
 
     Private Sub Window_Closing(sender As Object, e As ComponentModel.CancelEventArgs)
         m_Disposing = True
-        If m_SpcInterface IsNot Nothing Then
-            m_SpcInterface.Dispose()
-        End If
+        m_SpcInterface?.Dispose()
     End Sub
 
     Private Sub Button_OpenPort_Click(sender As Object, e As RoutedEventArgs)
@@ -38,7 +37,7 @@ Class MainWindow
 
         Try
             'Initialize InterfaceCommunicationSettings
-            '   PortType = -> Bluetooth
+            '   PortType = -> PortTypeEnum.PortType_Bluetooth | For BluetoothLE use "PortTypeEnum.PortType_BluetoothLE"
             '   PortName = selected device in ComboBox
             Dim readerPortSettings As InterfaceCommunicationSettings = InterfaceCommunicationSettings.GetForSerialDevice(
                 PortTypeEnum.PortType_Bluetooth,

@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>iID&#174;service Sample SPC</title>
+    <link rel="icon" href="data:,">
+
+    <link rel="stylesheet" href="style/style.css">
+
+    <script src="js/service_api.js"></script>
+
+    <script src="js/helper/tabs.js"></script>
+    <script src="js/helper/timer.js"></script>
+    <script src="js/helper/http.js"></script>
+    <script src="js/helper/base64.js"></script>
+    <script src="js/helper/convert.js"></script>
+</head>
+
+<body>
+	<div class="myContainer">
+		
+		<div class="myHeader">
+            <h1 style="color:#0081c9"><b>iID&#174;service Sample SPC</b></h1>
+            <h2>- Main functions -</h2>
+            <h3 id="destinationPath" ></h3>
+            <script type="text/JavaScript">
+                document.getElementById("destinationPath").innerHTML = PROTOCOL + "://" + IP_ADDRESS + ":" + PORT + "/api/iidservice/";
+            </script>
+		</div>
+
+		<div class="myBody">
+            
+            <table class="myTable" aria-describedby="content table">
+                <tr>
+                    <th>Functions</th>
+                    <th>Results</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infoContainer">
+                            <div>
+                                <p><b>GET <span style="color: slateblue;">/spc/IsInitialized</span></b></p>
+                            </div>
+                        </div>
+                        <button class="button myButton" onClick="JavaScript:GETisInitialized()">GET - is initialized</button>
+                    </td>
+                    <td rowspan="9">
+                        <p id="ResponseTime">Response time: 000000 ms</p>
+                        <p id="CodeResult"><b>Statuscode:&nbsp;</b></p>
+                        <pre id="MsgResult"></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infoContainer">
+                            <div>
+                                <p><b>GET <span style="color: slateblue;">/spc/Initialize</span></b></p>
+                            </div>
+                        </div>
+                        <button class="button myButton" onClick="JavaScript:POSTinitialize()">POST - initialize</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infoContainer">
+                            <div>
+                                <p><b>GET <span style="color: slateblue;">/spc/LastHeartbeat</span></b></p>
+                            </div>
+                        </div>
+                        <button class="button myButton" onClick="JavaScript:GETlastHeartbeat()">GET - last heartbeat</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infoContainer">
+                            <div>
+                                <p><b>GET <span style="color: slateblue;">/spc/SendSpcRequestASCII</span></b></p>
+                            </div>
+                        </div>
+                        <button class="button myButton" onClick="JavaScript:POSTsendSpcRequest()">POST - send SPC request</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infoContainer">
+                            <div>
+                                <p><b>SSE <span style="color: slateblue;">/spc/ReceiveUpdates</span></b></p>
+                            </div>
+                        </div>
+                        <table class="myTable" aria-describedby="identfiy cycle parameters table">
+                            <th colspan="2" style="text-align: center;color: blue;">Parameters</th>
+                            <tr>
+                                <td >
+                                    <label for="timeout"><b>Heartbeat timeout ms</b></label>
+                                </td>
+                                <td>
+                                    <input class="inputFields" type="number" name="timeout" id="timeout" value="10000">
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <br>
+                        <button class="button myButton" onClick="JavaScript:SSEstartReceiveUpdates()">SSE start</button>
+                        <button class="button myButton" onClick="JavaScript:SSEstop()">SSE stop</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infoContainer">
+                            <div>
+                                <p><b>POST <span style="color: slateblue;">/spc/Terminate</span></b></p>
+                            </div>
+                        </div>
+                        <button class="button myButton" onClick="JavaScript:POSTterminate()">POST - terminate</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infoContainer">
+                            <div>
+                                <p><b>GET <span style="color: slateblue;">/Version</span></b></p>
+                            </div>
+                        </div>
+                        <button class="button myButton" onClick="JavaScript:GETversion()">GET - version information</button>
+                    </td>
+                </tr>
+            </table>
+            <div class="myHeader">
+                <h2>- SSE output log -</h2>
+            </div>
+            <div id=outputScan></div>
+		</div>
+		
+		<div class="myFooter">
+            &copy; 2023 Copyright:&nbsp;<a href="https://www.microsensys.de">Micro-Sensys GmbH</a>
+            &nbsp;- GitHub:&nbsp;<a href="https://github.com/Micro-Sensys">https://github.com/Micro-Sensys</a>
+		</div>
+		
+    </div>
+</body>
+</html>

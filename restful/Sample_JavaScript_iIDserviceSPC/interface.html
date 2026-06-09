@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>iID&#174;service Sample SPC</title>
+    <link rel="icon" href="data:,">
+
+    <link rel="stylesheet" href="style/style.css">
+
+    <script src="js/service_api.js"></script>
+
+    <script src="js/helper/tabs.js"></script>
+    <script src="js/helper/timer.js"></script>
+    <script src="js/helper/http.js"></script>
+    <script src="js/helper/base64.js"></script>
+    <script src="js/helper/convert.js"></script>
+</head>
+
+<body>
+	<div class="myContainer">
+		
+		<div class="myHeader">
+            <h1 style="color:#0081c9"><b>iID&#174;service Sample SPC</b></h1>
+            <h2>- Interface functions -</h2>
+            <h3 id="destinationPath" ></h3>
+            <script type="text/JavaScript">
+                document.getElementById("destinationPath").innerHTML = PROTOCOL + "://" + IP_ADDRESS + ":" + PORT + "/api/iidservice/";
+            </script>
+		</div>
+
+		<div class="myBody">
+            
+            <table class="myTable" aria-describedby="content table">
+                <tr>
+                    <th>Functions</th>
+                    <th>Results</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infoContainer">
+                            <div>
+                                <p><b>GET <span style="color: slateblue;">/spc/interface/PossibleSettings</span></b></p>
+                            </div>
+                        </div>
+                        <button class="button myButton" onClick="JavaScript:GETpossibleSettings()">GET - possible settings</button>
+                    </td>
+                    <td rowspan="3">
+                        <p id="ResponseTime">Response time: 000000 ms</p>
+                        <p id="CodeResult"><b>Statuscode:&nbsp;</b></p>
+                        <pre id="MsgResult"></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infoContainer">
+                            <div>
+                                <p><b>GET <span style="color: slateblue;">/spc/interface/CurrentSettings</span></b></p>
+                            </div>
+                        </div>
+                        <button class="button myButton" onClick="JavaScript:GETcurrentSettings()">GET - current connection settings</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infoContainer">
+                            <div>
+                                <p><b>POST <span style="color: slateblue;">/spc/interface/CurrentSettings</span></b></p>
+                            </div>
+                        </div>
+                        <table class="myTable" style="width:100%" aria-describedby="connection settings table">
+                            <th colspan="2" style="text-align: center;color: blue;">Parameters</th>
+                            <tr>
+                                <td style="width:20%">
+                                    <label for="portPath"><b>PortPath</b></label>
+                                </td>
+                                <td>
+                                    <input class="inputFields" type="input" name="portPath" id="portPath" value="...">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:20%">
+                                    <label for="portType"><b>PortType</b></label>
+                                </td>
+                                <td>
+                                    <input class="inputFields" type="number" name="portType" id="portType" value="0">
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <br>
+                        <button class="button myButton" onClick="JavaScript:POSTnewConnectionSettings()">POST - new connection settings</button>
+                    </td>
+                </tr>
+            </table>
+		</div>
+		
+        
+
+		<div class="myFooter">
+            &copy; 2023 Copyright:&nbsp;<a href="https://www.microsensys.de">Micro-Sensys GmbH</a>
+            &nbsp;- GitHub:&nbsp;<a href="https://github.com/Micro-Sensys">https://github.com/Micro-Sensys</a>
+		</div>
+		
+    </div>
+
+
+
+</body>
+</html>
