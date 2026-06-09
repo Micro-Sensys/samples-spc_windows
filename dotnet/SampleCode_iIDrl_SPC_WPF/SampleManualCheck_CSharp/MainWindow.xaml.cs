@@ -1,10 +1,16 @@
 ﻿using iIDReaderLibrary;
 using iIDReaderLibrary.Utils;
 using iIDReaderLibrary.Utils.Definitions;
-using System;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace SampleManualCheck_CSharp
 {
@@ -13,22 +19,23 @@ namespace SampleManualCheck_CSharp
     /// </summary>
     public partial class MainWindow : Window
     {
-        System.Threading.CancellationTokenSource m_CancellationTokenSource;
+        private readonly CancellationTokenSource m_CancellationTokenSource;
 
-        SpcInterfaceControl m_SpcInterface = null;
+        SpcInterfaceControl? m_SpcInterface = null;
         private volatile bool m_Disposing = false;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            m_CancellationTokenSource = new System.Threading.CancellationTokenSource();
+            m_CancellationTokenSource = new CancellationTokenSource();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //Get port names and populate ComboBox
             string[] portNames = InterfaceCommunicationSettings.GetAvailablePortNames();
+            //For BluetoothLE use --> InterfaceCommunicationSettings.GetAvailableBlePairedDevices();
             if (portNames != null)
             {
                 if (portNames.Length > 0)
@@ -46,8 +53,7 @@ namespace SampleManualCheck_CSharp
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             m_Disposing = true;
-            if (m_SpcInterface != null)
-                m_SpcInterface.Dispose();
+            m_SpcInterface?.Dispose();
         }
 
         private void ComboBox_PortSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,10 +75,10 @@ namespace SampleManualCheck_CSharp
             try
             {
                 //Initialize InterfaceCommunicationSettings
-                //  PortType = -> Bluteooth
+                //  PortType = -> PortTypeEnum.PortType_Bluetooth | For BluetoothLE use "PortTypeEnum.PortType_BluetoothLE"
                 //  PortName = selected device in ComboBox
                 var readerPortSettings = InterfaceCommunicationSettings.GetForSerialDevice(
-                    PortTypeEnum.PortType_Bluetooth, 
+                    PortTypeEnum.PortType_Bluetooth,
                     comboBox_PortSelect.SelectedItem.ToString());
                 m_SpcInterface = new SpcInterfaceControl(readerPortSettings, "", "\r\n");
 
@@ -102,11 +108,8 @@ namespace SampleManualCheck_CSharp
 
         private void Button_ClosePort_Click(object sender, RoutedEventArgs e)
         {
-            if (m_SpcInterface != null)
-            {
-                m_SpcInterface.Dispose();
-                m_SpcInterface = null;
-            }
+            m_SpcInterface?.Dispose();
+            m_SpcInterface = null;
             button_OpenPort.IsEnabled = true;
             button_GetHeartbeatAsync.IsEnabled = false;
             button_GetLastHeartbeat.IsEnabled = false;
@@ -127,7 +130,7 @@ namespace SampleManualCheck_CSharp
 
             textBox_Data.Text = textBox_Label.Text = string.Empty;
 
-            m_SpcInterface.SendSpcRequest(command);
+            m_SpcInterface?.SendSpcRequest(command);
         }
 
         private void Button_Write_Click(object sender, RoutedEventArgs e)
@@ -149,13 +152,13 @@ namespace SampleManualCheck_CSharp
             if (((SolidColorBrush)border_Result.Background).Color != Colors.Transparent)
                 border_Result.Background = new SolidColorBrush(Colors.Transparent);
 
-            m_SpcInterface.SendSpcRequest(command);
+            m_SpcInterface?.SendSpcRequest(command);
         }
 
         private void DecodeReceivedText(string _receivedText)
         {
             // Remove <CR> if present
-            _receivedText = _receivedText.TrimEnd(new char[] { '\r' });
+            _receivedText = _receivedText.TrimEnd(['\r']);
             AddLoggingText(string.Format("Data received: {0}", _receivedText));
             //For this implementation, first char is an "Identifier"
             switch (_receivedText[0])
@@ -164,18 +167,18 @@ namespace SampleManualCheck_CSharp
                     if (_receivedText.Length >= 16) // Check if minimum length received
                     {
                         // Remove "T" Identifier
-                        _receivedText = _receivedText.Substring(1);
+                        _receivedText = _receivedText[1..];
 
                         // Get Personal-Nr., Ausweis-Nr. oder Equi-Nr. (0 - 15)
-                        string firstData = _receivedText.Substring(0, 16);
-                        firstData = firstData.TrimEnd(new char[] { '\0' });      // Remove not initialized data
+                        string firstData = _receivedText[..16];
+                        firstData = firstData.TrimEnd(['\0']);      // Remove not initialized data
 
                         // Get Equi-Daten (16 - 92)
                         string secondData = "";
                         if (_receivedText.Length > 16)
                         {
-                            secondData = _receivedText.Substring(16);
-                            secondData = secondData.TrimEnd(new char[] { '\0' }); // Remove not initialized data
+                            secondData = _receivedText[16..];
+                            secondData = secondData.TrimEnd(['\0']); // Remove not initialized data
                         }
 
                         if (m_Disposing) return;
@@ -246,7 +249,7 @@ namespace SampleManualCheck_CSharp
 
         private void Button_GetLastHeartbeat_Click(object sender, RoutedEventArgs e)
         {
-            var heartbeat = m_SpcInterface.Heartbeat;
+            var heartbeat = m_SpcInterface?.Heartbeat;
             if (heartbeat != null)
             {
                 AddLoggingText(string.Format("Heartbeat received: {0}, {1}", heartbeat.ReaderID, heartbeat.BatteryStatus));
@@ -262,7 +265,7 @@ namespace SampleManualCheck_CSharp
 
         private void Button_GetLastRawData_Click(object sender, RoutedEventArgs e)
         {
-            var rawDataReceived = m_SpcInterface.DataReceived;
+            var rawDataReceived = m_SpcInterface?.DataReceived;
             if (rawDataReceived != null)
                 DecodeReceivedText(rawDataReceived.Data);
         }
@@ -271,17 +274,20 @@ namespace SampleManualCheck_CSharp
         {
             m_CancellationTokenSource.Cancel();
             AddLoggingText("Waiting asynchronously for Heartbeat...");
-            var heartbeat = await m_SpcInterface.GetHeartbeatAsync(m_CancellationTokenSource.Token);
-            if (heartbeat != null)
+            if (m_SpcInterface != null)
             {
-                AddLoggingText(string.Format("Heartbeat received: {0}, {1}", heartbeat.ReaderID, heartbeat.BatteryStatus));
-                Dispatcher.Invoke(() =>
+                var heartbeat = await m_SpcInterface.GetHeartbeatAsync(m_CancellationTokenSource.Token);
+                if (heartbeat != null)
                 {
-                    textBlock_ReaderID.Text = heartbeat.ReaderID.ToString();
-                    textBlock_Battery.Text = heartbeat.BatteryStatus.ToString();
-                    if (((SolidColorBrush)border_Result.Background).Color != Colors.Transparent)
-                        border_Result.Background = new SolidColorBrush(Colors.Transparent);
-                });
+                    AddLoggingText(string.Format("Heartbeat received: {0}, {1}", heartbeat.ReaderID, heartbeat.BatteryStatus));
+                    Dispatcher.Invoke(() =>
+                    {
+                        textBlock_ReaderID.Text = heartbeat.ReaderID.ToString();
+                        textBlock_Battery.Text = heartbeat.BatteryStatus.ToString();
+                        if (((SolidColorBrush)border_Result.Background).Color != Colors.Transparent)
+                            border_Result.Background = new SolidColorBrush(Colors.Transparent);
+                    });
+                }
             }
         }
 
@@ -289,9 +295,12 @@ namespace SampleManualCheck_CSharp
         {
             m_CancellationTokenSource.Cancel();
             AddLoggingText("Waiting asynchronously for RawData...");
-            var rawData = await m_SpcInterface.GetDataReceivedAsync(m_CancellationTokenSource.Token);
-            if (rawData != null)
-                DecodeReceivedText(rawData.Data);
+            if (m_SpcInterface != null)
+            {
+                RawDataReceived rawData = await m_SpcInterface.GetDataReceivedAsync(m_CancellationTokenSource.Token);
+                if (rawData != null)
+                    DecodeReceivedText(rawData.Data);
+            }
         }
     }
 }

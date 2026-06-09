@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SampleManualCheck_CSharp/SampleManualCheck_CSharp.csproj" />
+  <Project Path="SampleManualCheck_VB/SampleManualCheck_VB.vbproj" />
+  <Project Path="SampleThreads_CSharp/SampleThreads_CSharp.csproj" />
+  <Project Path="SampleThreads_VB/SampleThreads_VB.vbproj" />
+</Solution>
